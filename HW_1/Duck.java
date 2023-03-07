@@ -1,18 +1,13 @@
-package seminar1.child;
-
-import seminar1.parent.Animal;
+package Java_OOP.HW_1;
 
 public class Duck extends Animal {
-    public Duck(String color, int legsCount) {
-        super(color, legsCount);
+    public Duck(String name, String color, int legsCount) {
+        super(name, color, 2);
     }
 
     @Override
     public void speak() {
-        System.out.printf("%s сказал: Кря!%n", getType());
+        System.out.printf("%s : Quack!%n", getType());
     }
 
-    public void fly() {
-        System.out.printf("%s полетел!%n", getType());
-    }
 }

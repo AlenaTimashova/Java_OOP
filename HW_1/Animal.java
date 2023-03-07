@@ -1,57 +1,63 @@
-package seminar1.parent;
+package Java_OOP.HW_1;
 
 public class Animal {
     private String name;
     private final String color;
     private int legsCount;
 
-    public Animal(String name, String color) {
+    public Animal(String name, String color, int legsCount) {
         this.name = name;
         this.color = color;
-        this.legsCount = 4;
-    }
-
-    public Animal(String color, int legsCount) {
-        this("Безымянный", color);
         this.legsCount = legsCount;
     }
 
-    public Animal() {
-        this("Безымянный", "чёрный");
+    public Animal(String name) {
+        this(name, null, 0);
     }
 
-    // todo: Ниже методы, отвечающие за состояние объекта.
-    //  !!!Обратите внимание на разные способы вывода строк в sysout java
+    public Animal() {
+        this(null);
+    }
 
-//    public void wakeUp() {
-//        System.out.println(getType() + ": проснулся");
-//    }
-//
-//    public void findFood() {
-//        String out = String.format("%s: нашел еду%n", getType());
-//        System.out.println(out);
-//    }
-//
-//    public void eat() {
-//        System.out.printf("%s: поел%n", getType());
-//    }
-//
-//    public void toPlay() {
-//        System.out.printf("%s: поиграл%n", getType());
-//    }
-//
-//    public void goToSleep() {
-//        System.out.printf("%s: уснул%n", getType());
-//    }
+    @Override
+    public String toString() {
+        return String.format(
+                "%s {name: %s,%ncolor: %s,%nlegs: %s;%n}", getType(), getName(), getColor(), getLegsCount()
+        );
+    }
+    
+   private void wakeUp() {
+       System.out.println(getType() + ": Animal woke up");
+   }
+
+   private void findFood() {
+    System.out.printf("%s: found food%n", getType());
+   }
+
+   private void eat() {
+       System.out.printf("%s: ate%n", getType());
+   }
+
+   public void toPlay() {
+       System.out.printf("%s: played%n", getType());
+   }
+
+   private void goToSleep() {
+       System.out.printf("%s: went to sleep%n", getType());
+   }
 
     public void speak() {
-        System.out.printf("%s: ...%n", getType());
+        System.out.printf("%s: yarr!%n", getType());
     }
 
-    public void hunt() {}
+    public void hunt() {
+        wakeUp();
+        findFood();
+        eat();
+        goToSleep();
+    }
 
-    //todo: Ниже геттеры и сеттеры. !!! Обратите внимание, не к каждому полю есть сеттер(один из шагов инкапсуляции)
-
+    
     public String getName() {
         return name;
     }
@@ -70,5 +76,17 @@ public class Animal {
 
     public String getType() {
         return this.getClass().getSimpleName();
+    }
+
+    public void toGo(){
+        System.out.printf("%s: I can walk%n", getType());
+    }
+
+    public void swim(){
+        System.out.printf("%s: I can swim%n", getType());
+    }
+
+    public void fly(){
+        System.out.printf("%s: I can fly%n", getType());
     }
 }

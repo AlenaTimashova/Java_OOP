@@ -1,15 +1,15 @@
-package seminar1.child;
+package Java_OOP.HW_1;
 
-import seminar1.parent.Animal;
+
 
 public class Cat extends Animal {
     public Cat(String name, String color) {
-        super(name, color);
+        super(name, color, 4);
     }
 
     @Override
     public void speak() {
-        System.out.printf("%s сказал: Meow!%n", getType());
+        System.out.printf("%s : Meow!%n", getType());
     }
 
     @Override
@@ -21,32 +21,31 @@ public class Cat extends Animal {
         goToSleep();
     }
 
-    @Override
-    public String toString() {
-        return String.format(
-                "%s {name: %s,%ncolor: %s,%nlegs: %s;%n}", getType(), getName(), getColor(), getLegsCount()
-        );
-    }
+  
 
     private void wakeUp() {
-        System.out.println(getType() + ": проснулся");
+        System.out.println(getType() + ": woke up");
     }
 
     private void findFood() {
-        String out = String.format("%s: нашел еду%n", getType());
+        String out = String.format("%s: found food%n", getType());
         System.out.println(out);
     }
 
     private void eat() {
-        System.out.printf("%s: поел%n", getType());
-    }
-
-    private void toPlay() {
-        System.out.printf("%s: поиграл%n", getType());
+        System.out.printf("%s: ate%n", getType());
     }
 
     private void goToSleep() {
-        System.out.printf("%s: уснул%n", getType());
+        System.out.printf("%s: went to sleep%n", getType());
     }
 
+    @Override
+    public void swim() {
+        System.out.printf("%s : I can't swim!%n", getType());
+    }
+    @Override
+    public void fly() {
+        System.out.printf("%s : I can't fly%n", getType());
+    }
 }
