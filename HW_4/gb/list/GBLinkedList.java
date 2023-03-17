@@ -14,26 +14,33 @@ public class GBLinkedList<T> implements GBDeque<T> {
     private GBNode<T> lastNode;
 
      public GBLinkedList() {
-        firstNode = new GBNode<T>(null, null, lastNode);
-        lastNode = new GBNode<T>(null, firstNode, null);
+        firstNode = null;
+        lastNode = null;
     }
 
     @Override
     public void addFirst(T element) {
-        GBNode<T> next = firstNode;
-        next.setItem(element);
-        firstNode = new GBNode<T>(null, null, next);
-        next.setPreviousElement(firstNode);
+        GBNode<T> temp = firstNode;
+        GBNode<T> newNode = new GBNode<>(element, null, temp);
+        firstNode = newNode;
+        if(temp == null) {
+            lastNode = newNode;
+        } else {
+            temp.setPreviousElement(newNode);
+        }
         size++;
 
     }
 
     @Override
     public void addLast(T element) {
-        GBNode<T> prev = lastNode;
-        prev.setItem(element);
-        lastNode = new GBNode<T>(null, prev, null);
-        prev.setNextElement(lastNode);
+        GBNode<T> temp = lastNode;
+        GBNode<T> newNode = new GBNode<>(element, null, temp);
+        if(temp == null) {
+            lastNode = newNode;
+        } else {
+            temp.setPreviousElement(newNode);
+        }
         size++;
     }
 
@@ -44,7 +51,7 @@ public class GBLinkedList<T> implements GBDeque<T> {
 
     @Override
     public T getElementbyIndex(int index) {
-        GBNode<T> result = firstNode.getNextElement();
+        GBNode<T> result = firstNode;
         for (int i = 0; i < index; i++) {
             result = result.getNextElement();
         }
