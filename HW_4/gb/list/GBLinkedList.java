@@ -35,11 +35,12 @@ public class GBLinkedList<T> implements GBDeque<T> {
     @Override
     public void addLast(T element) {
         GBNode<T> temp = lastNode;
-        GBNode<T> newNode = new GBNode<>(element, null, temp);
+        GBNode<T> newNode = new GBNode<>(element, temp, null);
+        lastNode = newNode;
         if(temp == null) {
-            lastNode = newNode;
+            firstNode = newNode;
         } else {
-            temp.setPreviousElement(newNode);
+            temp.setNextElement(newNode);
         }
         size++;
     }
